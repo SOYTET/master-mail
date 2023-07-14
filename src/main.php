@@ -67,15 +67,21 @@
     function rgbToHex(r, g, b) {
         return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
     }
+    function getRandomNumber(min, max) {
+        // Generate a random number between min (inclusive) and max (inclusive)
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
     // var rgb = colorMixer([127,0,127],[143,0,143],0.5)
     // console.log(rgbToHex(rgb))
     let user2 = "default";
-    let key1 = getRandomPrime(1, 999);
-    let key2 = getRandomPrime(1, 999);
+    let key1 = getRandomNumber(1, 55);
+    let key2 = getRandomPrime(1, 55);
+    let privateKeyAuto = getRandomPrime(1, 55);
     setInterval(() => {
-        key1 = getRandomPrime(1, 999);
-        key2 = getRandomPrime(1, 999);
-    }, 2000);
+        key1 =getRandomNumber(1, 55);
+        key2 = getRandomPrime(1, 55);
+        privateKeyAuto = getRandomPrime(1, 55);
+    }, 500);
     let publicKey = 0;
     let tag2 = "default";
 
@@ -111,12 +117,11 @@
         document.cookie = 'specialKey' + '=' + specialKey;
     }
     function privateKey3() {
-        privateKey = window.prompt("Type prime number: ");
+        privateKey = window.prompt("Type prime number: ", privateKeyAuto);
         document.cookie = 'privateKey' + "=" + privateKey;
         specialKey = Math.pow(key1, privateKey) % key2;
         let text = 'Private Key:';
         let text2 = " && Publick Key: ";
-        alert(text, privateKey, text2, specialKey);
         document.cookie = 'key1' + "=" + key1;
         document.cookie = 'key2' + "=" + key2;
         document.cookie = 'specialKey' + "=" + Math.pow(key1, privateKey) % key2;

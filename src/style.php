@@ -56,7 +56,7 @@
         overflow-y: scroll;
         background-color: #001e4a;
     }
-    #menu .page{
+    #menu .connect{
         width: 270px;
         padding: 9px;
         margin-top:10px;
@@ -66,6 +66,19 @@
         border-bottom-left-radius: 0px;
         border-top-left-radius: 0px;
         padding-left: 20px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    #menu .reply{
+        width: 270px;
+        padding: 9px;
+        margin-top:10px;
+        /* background-color: rgba(113, 218, 0, 0.729); */
+        background-color: rgb(203, 156, 1);
+        border-radius:50px;
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px;
+        padding-left: 20px;
+        color: black;
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
     #menu .page:hover{
@@ -238,5 +251,9 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    .type_connect{
+        position: fixed;
+        color: rgba(255, 255, 255, 0.559);
     }
 </style>

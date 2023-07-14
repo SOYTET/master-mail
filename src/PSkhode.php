@@ -78,9 +78,31 @@ include("./connection.php") ?>
         }
     </style>
 <script>
+     function getRandomPrime(min, max) {
+        // Generate a random number in the specified range.
+        var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        // Check if the number is prime.
+        var isPrime = true;
+        for (var i = 2; i <= Math.sqrt(randomNumber); i++) {
+            if (randomNumber % i === 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        // If the number is prime, return it.
+        if (isPrime) {
+            return randomNumber;
+        } else {
+            // Otherwise, generate another random number and try again.
+            return getRandomPrime(min, max);
+        }
+    }
     document.cookie = 'privateKey55' + "=" + "0";
+    privateKeyAuto = getRandomPrime(1, 55);
     function xorKeyPrivate(){
-        var key5 = window.prompt("Enter your master code: ");
+        var key5 = window.prompt("Enter your master code: ",privateKeyAuto);
         document.cookie = 'privateKey55' + "=" + key5;
         let key1 =  document.getElementById("idkey1").innerText;
         let key2 =  document.getElementById("idkey2").innerText;
@@ -94,7 +116,7 @@ include("./connection.php") ?>
 </head>
 <?php
 $user_send = $_GET["user"];
-$type ="connect";
+$type ="reply";
 $user = $_SESSION['username'];
 $tag = "default";
 $key1 = $_GET['key1'];

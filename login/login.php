@@ -22,7 +22,7 @@ if(	isset($_POST["username"])&&
      
 // $_SESSION["Password"] = "$Password";
 			if(!isset($chackRef)){
-				header('location: /rsa/index.php');
+				header('location: /master-mail/index.php');
 			}else{
 				header('location: '.$_GET['ref']);
 			}

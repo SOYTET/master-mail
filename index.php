@@ -34,10 +34,10 @@ $user = $_SESSION['username'];
         </div>
         <div id="menu">
             <?php
-            $mail_connect = mysqli_query($connection_mail, "SELECT * FROM `rsa_key` WHERE `user2` = '$user' && `type` = 'connect';");
+            $mail_connect = mysqli_query($connection_mail, "SELECT * FROM `rsa_key` WHERE `user2` = '$user' && `type` = 'connect' || `type` = 'reply' ;");
             while ($row_connect = mysqli_fetch_assoc($mail_connect)) {
                 ?>
-            <div class="page"><i class="fa-solid fa-envelope-circle-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="<?php echo $row_connect['type']; ?>"><i class="fa-solid fa-envelope-circle-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;
                 <?php echo $row_connect['key1']; ?> &nbsp;&nbsp;<i class="fa-solid fa-key"
                     onclick="connection()"></i>&nbsp;&nbsp;
                 <?php echo $row_connect['key2']; ?> &nbsp;&nbsp; <i class="fa-solid fa-key"
